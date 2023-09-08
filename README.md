@@ -1,19 +1,12 @@
-## Created to demonstrate Capacitor bugs 6792, 6856, 6821, 6860 and 6882
+## Created with Capacitor Create App
 
-This app provides test cases for each of these bug reports.
+This app was created using [`@capacitor/create-app`](https://github.com/ionic-team/create-capacitor-app),
+and comes with a very minimal shell for building an app.
 
-Bug 6792: on Android, use the Test buttons to see the result of posting data
+### Running this example
 
-Bug 6856: on Android, use the Test button to see the effect of setting cookies from two distinct domains. Then requesting the cookies from one of the domains returns all of them. This is wrong.
+To run the provided example, you can use `npm start` command.
 
-Bug 6821: On iOS, use the Test button for Bug 6856 to set cookies. Then use the Test button for Bug 6821 to retrieve the expiry dates for these cookies. You will see that he expiry dates are correct.
-
-Bug 6860: On iOS and Android, use the Test button to see that setting a cookie via setCookie or deleting a cookie via deleteCookie does not update document.cookie, although the cookies are indeed deleted since the test checks that via the server.
-
-Bug 6882: On Android, use the test button to see mthat a cookie with the domain spcified results on document.cookie not being updated
-
-
-### Running this app
-
-To run the app, copy the files and then add Capacitor core, cli and Android/iOS.
-
+```bash
+npm start
+```
