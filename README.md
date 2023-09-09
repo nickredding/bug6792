@@ -10,6 +10,7 @@ Bug 6821: On iOS, use the Test button for Bug 6856 to set cookies. Then use the 
 
 Bug 6860: On iOS and Android, use the Test button to see that setting a cookie via setCookie or deleting a cookie via deleteCookie does not update document.cookie, although the cookies are indeed deleted since the test checks that via the server.
 
+Bug 6885: On iOS, use the Test button to receive an HttpOnly cookie and see that it is added to document.cookie
 
 ### Running this app
 
