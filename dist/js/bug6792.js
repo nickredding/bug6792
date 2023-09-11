@@ -176,12 +176,12 @@ function setonrcookie() {
             .then(
                 function() {
                     output += '<strong>document.cookie upon completion:</strong><br/>' + (!/^ *$/.test(document.cookie) ? document.cookie : '""') + '<br/><br/>';
-                    output += 'Setting cookie onrsetkey1=onrsetvalue1 at https://localhost<br/><br/>';
-                    cookies.setCookie(({url:'https://localhost', key: 'onrsetkey1', value: 'onrsetvalue1', path: '/', expires: 'Sat, 02 Sep 2024 16:17:50 GMT'}))         
+                    output += 'Setting cookie nrsetkey1=nrsetvalue1 at https://nickredding.ca<br/><br/>';
+                    cookies.setCookie(({url:'https://nickredding.ca', key: 'nrsetkey1', value: 'nrsetvalue1', path: '/', expires: 'Sat, 02 Sep 2024 16:17:50 GMT'}))         
                     .then(
                         function() {
                             output += '<strong>document.cookie upon completion:</strong><br/>' + (!/^ *$/.test(document.cookie) ? document.cookie : '""') + '<br/><br/>';
-                            output += 'Retrieving cookies for domain onlinenewsreader.net (for Android this is just listing document.cookie)<br/><br/>';
+                            output += 'Retrieving cookies for domain onlinenewsreader.net (for Android this is just listing document.cookie unless the fix has been applied)<br/><br/>';
                             cookies.getCookies({url:'www.onlinenewsreader.net'})
                             .then(
                                 function(data) {
@@ -189,7 +189,18 @@ function setonrcookie() {
                                     testget('https://www.onlinenewsreader.net/echo.php', null,
                                         function(result) {
                                             output += '<br/><br/>Checking with Http.get (onrsetkey1 is shown as a received cookie)<br/><em>'+ result + '</em><br/>';
-                                            outputResult('setonrcookie', output);
+                                            cookies.clearCookies({url: 'nickredding.ca'})
+                                            .then(
+                                                function() {
+                                                    output += '<br/><br/>Clearing cookies for nickredding.ca<br/><br/>';
+                                                    output += '<strong>document.cookie upon completion:</strong><br/>' + (!/^ *$/.test(document.cookie) ? document.cookie : '""') + '<br/><br/>';
+                                                    testget('https://nickredding.ca/echo.php', null,
+                                                        function(result) {
+                                                            output += '<br/><br/>Checking with Http.get<br/><em>'+ result + '</em><br/>';
+                                                            outputResult('setonrcookie', output);
+                                                    });
+                                                }
+                                            );
                                     });
                                 }
                             );
@@ -207,14 +218,7 @@ function deleteonrcookie() {
     .then(
         function() {
             output += '<strong>document.cookie upon completion:</strong><br/>' + (!/^ *$/.test(document.cookie) ? document.cookie : '""') + '<br/><br/>';
-            output += 'Deleting cookie onrsetkey1 at https://localhost<br/><br/>';
-            cookies.deleteCookie({url: 'https://localhost', key: 'onrsetkey1'})
-        }
-    )
-    .then(
-        function() {
-            output += '<strong>document.cookie upon completion:</strong><br/>' + (!/^ *$/.test(document.cookie) ? document.cookie : '""') + '<br/><br/>';
-            output += 'Retrieving cookies for domain onlinenewsreader.net (for Android this is just listing document.cookie)<br/><br/>';
+            output += 'Retrieving cookies for domain onlinenewsreader.net (for Android this is just listing document.cookie unless the fix has been applied)<br/><br/>';
             cookies.getCookies({url:'www.onlinenewsreader.net'})
             .then(
                 function(data) {
