@@ -232,7 +232,8 @@ function deleteonrcookie() {
 
 function sethttponly() {
     var params = { setcookiekey: 'onrhttponlykey1', setcookievalue: 'onrhttponlyvalue1', permanentcookie: '1' , httponly: '1', secure: '1'};
-    var output = '<strong>document.cookie prior to testget:</strong><br/>' + (!/^ *$/.test(document.cookie) ? document.cookie : '""') + '<br/><br/>';
+    var output = '<strong>document.cookie prior to server invocation:</strong><br/>' + (!/^ *$/.test(document.cookie) ? document.cookie : '""') + '<br/><br/>';
+    output += 'Setting cookie onrhttponlykey1 with HttpOnly parameter<br/><br/>'; 
     testget('https://www.onlinenewsreader.net/echo.php', params, 
     function(data) {
         output += '<strong>Output:</strong><br/><em>' + data + '</em><br/><br/>';

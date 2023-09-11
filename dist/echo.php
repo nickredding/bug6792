@@ -60,8 +60,15 @@ if ((isset($_GET['setcookiekey']) && $_GET['setcookiekey'] != '') || (isset($_PO
         else {
             $domain = '';
         }
-        setcookie($key, $value, $expires, '/', $domain, $secure, $httponly);
-        echo $nl . "SET COOKIE " . $key . ' = ' .  $value . ($expires == 0 ? '(session)' : '(permanent)') . ($domain == '' ? '' : " domain=$domain") . ($httponly ? ' httpOnly' : '') . $nl;
+        if ($secure) {
+            $path = '/; SameSite=none';
+        }
+        else {
+            $path = '/';
+        }
+        $path = '/';
+        setcookie($key, $value, $expires, $path, $domain, $secure, $httponly);
+        echo $nl . "SET COOKIE " . $key . ' = ' .  $value . ($expires == 0 ? '(session)' : '(permanent)') . " path=$path" . ($domain == '' ? '' : " domain=$domain") . ($httponly ? ' httpOnly' : '') . $nl;
     }
     else {
         echo $nl . $nl . "<strong>ERROR: setcookievalue missing or empty</strong>" . $nl . $nl;
