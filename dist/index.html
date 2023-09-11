@@ -17,7 +17,7 @@
    <button onclick="capacitorpostdata()">Test</button>&nbsp;&nbsp;<strong>Post Data via CapacitorHttp</strong>
     <br/>
     <br/>
-    This does not work because the data object is sent as an object with key the stringfied data and empty value
+    This does not work because the data object is sent as an object with key the stringfied data and empty value. If the fix has been applied the output will show the data passed successfully via the POST request.
     <br/>
     <div id="capacitorpostdata"></div>
     <br/>
@@ -25,14 +25,14 @@
     <button onclick="ajaxpostdata()">Test</button>&nbsp;&nbsp;<strong>Post Data via jquery ajax</strong>
     <br/>
     <br/>
-    This works because jQuery properly encodes the data object
+    This works because jQuery properly encodes the data object.
     <br/>
     <div id="ajaxpostdata"></div>
     <br/>
     <button onclick="capacitorpostdatastring()">Test</button>&nbsp;&nbsp;<strong>Post Data string via CapacitorHttp</strong>
     <br/>
     <br/>
-    This works because the data object is provided to Capacitor already properly encoded
+    This works because the data object is provided to Capacitor already properly encoded.
     <br/>
     <div id="capacitorpostdatastring"></div>
     <br/>
@@ -41,7 +41,8 @@
     <button onclick="capacitorurlcookies()">Test</button>&nbsp;&nbsp;<strong>Retrieve cookies set by specific url</strong>
      <br/>
      <br/>
-     If this is running Capacitor 5.2.3 or higher, this does not work because getCookies returns ALL cookies set by any url domain that are not HTTP Only. Up to Capacitor 5.2.2, this works, but also returns cookies that are HTTP Only.
+     If this is running Capacitor 5.2.3 or higher, this does not work because getCookies returns ALL cookies set by any url domain that are not HTTP Only. Up to Capacitor 5.2.2, this works, but also returns cookies that are HTTP Only.<br/><br/>
+     If the fix has been applied getting the cookies for each url will return only the cookies for each domain.
      <br/>
      <div id="capacitorurlcookies"></div>
      <br/>
